@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#070611">
+  <meta name="description" content="AKASH — a student exploring science, astronomy, chemistry, physics, biology and AI.">
+  <title>AKASH — Science Lab</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="loader" class="loader" aria-label="Loading">
+    <div class="loader-orbit"><span></span></div>
+    <p>INITIALIZING SCIENCE LAB<span class="dots">...</span></p>
+  </div>
+
+  <canvas id="spaceCanvas" aria-hidden="true"></canvas>
+  <div class="nebula nebula-a"></div>
+  <div class="nebula nebula-b"></div>
+  <div class="noise" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <a class="brand" href="#home" aria-label="AKASH home">
+      <span class="brand-mark">A</span>
+      <span>AKASH</span>
+    </a>
+    <nav class="nav">
+      <a href="#home">Home</a>
+      <a href="#lab">Science Lab</a>
+      <a href="#about">About</a>
+    </nav>
+    <a class="github-btn" href="https://github.com/" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+  </header>
+
+  <main>
+    <section id="home" class="hero section">
+      <div class="hero-copy reveal">
+        <div class="eyebrow"><span class="pulse-dot"></span> CURIOUS BY NATURE</div>
+        <h1>AKASH<span class="accent">.</span></h1>
+        <p class="hero-sub">Student · Science Explorer · Astronomy Enthusiast</p>
+        <p class="hero-text">
+          I've been fascinated by science since childhood — from the tiny world of atoms
+          to the enormous mystery of galaxies. Astronomy especially keeps me looking up
+          and asking better questions.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#lab">Enter the Lab <span>→</span></a>
+          <a class="btn btn-ghost" href="#about">My Story</a>
+        </div>
+        <div class="mini-stats">
+          <div><b>01</b><span>Curiosity</span></div>
+          <div><b>∞</b><span>Questions</span></div>
+          <div><b>24/7</b><span>Explore</span></div>
+        </div>
+      </div>
+
+      <div class="hero-visual reveal" id="blackHoleArea">
+        <div class="orbit-ring ring-1"></div>
+        <div class="orbit-ring ring-2"></div>
+        <div class="black-hole">
+          <div class="accretion accretion-back"></div>
+          <div class="event-horizon"></div>
+          <div class="accretion accretion-front"></div>
+          <div class="lens-glow"></div>
+        </div>
+        <div class="bh-label">
+          <span>03</span>
+          <div><b>BLACK HOLE</b><small>Gravity bends the path of light.</small></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="lab" class="section lab-section">
+      <div class="section-heading reveal">
+        <div class="eyebrow"><span class="pulse-dot"></span> THE SCIENCE LAB</div>
+        <h2>Explore the <em>unknown.</em></h2>
+        <p>Five windows into the world that keeps me curious.</p>
+      </div>
+
+      <div class="science-grid">
+        <article class="science-card astronomy reveal" data-topic="astronomy">
+          <div class="card-icon">✦</div><span class="card-no">01</span>
+          <h3>Astronomy</h3>
+          <p>Stars, planets, galaxies and black holes — the universe is basically an endless question mark.</p>
+          <button class="learn-btn">Explore <span>↗</span></button>
+        </article>
+        <article class="science-card physics reveal" data-topic="physics">
+          <div class="card-icon">⚛</div><span class="card-no">02</span>
+          <h3>Physics</h3>
+          <p>Motion, energy, forces and the laws that describe how nature behaves from the small to the cosmic.</p>
+          <button class="learn-btn">Explore <span>↗</span></button>
+        </article>
+        <article class="science-card chemistry reveal" data-topic="chemistry">
+          <div class="card-icon">◈</div><span class="card-no">03</span>
+          <h3>Chemistry</h3>
+          <p>Atoms and molecules combine, rearrange and react — turning microscopic rules into visible matter.</p>
+          <button class="learn-btn">Explore <span>↗</span></button>
+        </article>
+        <article class="science-card biology reveal" data-topic="biology">
+          <div class="card-icon">⌬</div><span class="card-no">04</span>
+          <h3>Biology</h3>
+          <p>Cells, DNA and living systems show how remarkably organized life can be.</p>
+          <button class="learn-btn">Explore <span>↗</span></button>
+        </article>
+        <article class="science-card ai reveal" data-topic="ai">
+          <div class="card-icon">⌁</div><span class="card-no">05</span>
+          <h3>Artificial Intelligence</h3>
+          <p>Modern AI can learn patterns from data and use them to generate, classify and solve problems.</p>
+          <button class="learn-btn">Explore <span>↗</span></button>
+        </article>
+      </div>
+
+      <div class="fact-panel reveal">
+        <div class="fact-tag">DID YOU KNOW?</div>
+        <p id="factText">A day on Venus is longer than a year on Venus.</p>
+        <button id="factBtn" class="icon-btn" aria-label="Show another fact">↻</button>
+      </div>
+
+      <div class="games-wrap reveal">
+        <div class="section-heading compact">
+          <div class="eyebrow"><span class="pulse-dot"></span> MICRO EXPERIMENTS</div>
+          <h2>Play. <em>Learn.</em> Repeat.</h2>
+          <p>Small games with real science hiding underneath.</p>
+        </div>
+
+        <div class="game-tabs" role="tablist">
+          <button class="game-tab active" data-game="orbit" role="tab">01 · Orbital Run</button>
+          <button class="game-tab" data-game="atom" role="tab">02 · Atom Builder</button>
+          <button class="game-tab" data-game="reaction" role="tab">03 · Reaction Lab</button>
+        </div>
+
+        <div class="game-panel" id="game-orbit">
+          <div class="game-copy">
+            <span class="game-label">GRAVITY SIMULATION</span>
+            <h3>Orbital Run</h3>
+            <p>Guide the probe around the star. Stay inside the orbit zone and collect 3 energy nodes.</p>
+            <div class="game-score">Energy <strong id="orbitScore">0 / 3</strong></div>
+            <p class="hint">Desktop: ← → &nbsp; Mobile: use the controls.</p>
+            <button class="btn btn-primary game-start" data-start="orbit">Start Mission</button>
+          </div>
+          <div class="game-screen orbit-screen">
+            <canvas id="orbitCanvas"></canvas>
+            <div class="mobile-controls">
+              <button data-key="left">←</button><button data-key="right">→</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="game-panel hidden" id="game-atom">
+          <div class="game-copy">
+            <span class="game-label">ATOMIC STRUCTURE</span>
+            <h3>Atom Builder</h3>
+            <p>Build the requested atom by choosing the correct number of protons, neutrons and electrons.</p>
+            <div class="atom-target" id="atomTarget">Target: Carbon — C</div>
+            <div class="game-score">Score <strong id="atomScore">0</strong></div>
+            <button class="btn btn-primary" id="atomCheck">Check Atom</button>
+          </div>
+          <div class="game-screen atom-screen">
+            <div class="atom-visual">
+              <div class="nucleus"><span id="pCount">0</span><small>p</small><span id="nCount">0</span><small>n</small></div>
+              <div class="shell shell-one"></div><div class="shell shell-two"></div>
+            </div>
+            <div class="atom-controls">
+              <label>Protons <input id="protons" type="number" min="0" max="20" value="0"></label>
+              <label>Neutrons <input id="neutrons" type="number" min="0" max="25" value="0"></label>
+              <label>Electrons <input id="electrons" type="number" min="0" max="20" value="0"></label>
+            </div>
+            <p id="atomResult" class="game-result" aria-live="polite"></p>
+          </div>
+        </div>
+
+        <div class="game-panel hidden" id="game-reaction">
+          <div class="game-copy">
+            <span class="game-label">CHEMICAL REACTION</span>
+            <h3>Reaction Lab</h3>
+            <p>Pick the product that correctly completes the simplified reaction.</p>
+            <div class="reaction-equation" id="reactionEquation">H₂ + O₂ → ?</div>
+            <div class="game-score">Score <strong id="reactionScore">0</strong></div>
+          </div>
+          <div class="game-screen reaction-screen">
+            <div class="reaction-options">
+              <button data-answer="H2O">H₂O</button>
+              <button data-answer="CO2">CO₂</button>
+              <button data-answer="NaCl">NaCl</button>
+              <button data-answer="O3">O₃</button>
+            </div>
+            <p id="reactionResult" class="game-result" aria-live="polite"></p>
+            <button class="btn btn-ghost" id="nextReaction">Next reaction</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section about-section">
+      <div class="about-card reveal">
+        <div class="avatar" aria-label="Abstract science-themed Akash avatar">
+          <div class="avatar-glow"></div>
+          <div class="avatar-head"></div>
+          <div class="avatar-body"></div>
+          <div class="avatar-orbit"></div>
+          <span>A</span>
+        </div>
+        <div class="about-copy">
+          <div class="eyebrow"><span class="pulse-dot"></span> ABOUT AKASH</div>
+          <h2>Curiosity started <em>early.</em></h2>
+          <p>
+            I'm a student who has been interested in science since childhood. I love the feeling
+            of discovering why something works instead of only memorizing the answer. Astronomy
+            is especially fascinating to me because the universe is enormous, beautiful and full
+            of things we are still trying to understand.
+          </p>
+          <p>
+            I also enjoy exploring chemistry, physics, biology and the rapidly changing world of AI.
+            Science gives us tools to understand reality; curiosity gives us a reason to keep exploring it.
+          </p>
+          <div class="quote">“Science explains what we know. Curiosity pushes us toward what we don't.”</div>
+        </div>
+      </div>
+
+      <footer>
+        <span>AKASH / SCIENCE LAB</span>
+        <span>Built with curiosity · 2026</span>
+      </footer>
+    </section>
+  </main>
+
+  <div class="modal" id="topicModal" aria-hidden="true">
+    <div class="modal-box">
+      <button class="modal-close" id="modalClose" aria-label="Close">×</button>
+      <span class="game-label" id="modalLabel">SCIENCE</span>
+      <h2 id="modalTitle">Astronomy</h2>
+      <p id="modalText"></p>
+      <div class="modal-fact" id="modalFact"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
